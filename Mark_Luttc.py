@@ -8,11 +8,14 @@
 
 
 '''
-
+#######################################################################################
 class FirstClass:
+    '''класс с двуми методами'''
+    '''принимает значения'''
     def setdata(self, value):
         self.data = value
 
+        '''выводит значения'''
     def display(self):
         print(self.data)
 
@@ -26,17 +29,30 @@ class ScondClass(FirstClass):
 
 
 class ThirdClass(ScondClass):
-    def __init__(self, value):
+    def __init__(self, value): # вызывается для ThirdClass(value)
         self.data = value
 
-    def __add__(self, other):
+    def __add__(self, other): # вызывается для self + other
         return ThirdClass(self.data + other)
 
-    def __str__(self):
+    def __str__(self): # вызывается для print(self), str()
         return '[ThirdClass: %s]' % self.data
 
-    def mul(self, other):
+    def mul(self, other): # изменение на месте
         self.data *= other
+#########################################################################################
+
+class rec: pass #обьект пустого пространства имен
+
+rec.name = 'Bob'
+rec.age = 40
+#####################################################
+
+def uppername(obj):
+    '''возвращает обьект в верхнем регистре'''
+    return obj.name.upper()
+
+
 
 
 if __name__ == "__main__":
@@ -55,14 +71,33 @@ if __name__ == "__main__":
     # z = ScondClass()
     # z.setdata(42)
     # z.display()
-
-    a = ThirdClass('abc')
-    a.display()
-    print(a)
-
-    b = a + "xyz"
-    b.display()
-    print(b)
-
-    a.mul(3)
-    print(a)
+###############################
+    # a = ThirdClass('abc')
+    # a.display()
+    # print(a)
+    #
+    # b = a + "xyz"
+    # b.display()
+    # print(b)
+    #
+    # a.mul(3)
+    # print(a)
+###############################
+    #print(rec.name)
+    x = rec()
+    y = rec()
+    print(x.name, y.name)
+    x.name = 'Sue'
+    print(x.name, y.name, rec.name)
+    print(list(rec.__dict__.keys())) #список внутренних имен класса
+    print(list(name for name in rec.__dict__ if not name.startswith('__')))
+    print(list(x.__dict__.keys()))
+    print(list(y.__dict__.keys()))
+    print(x.name, x.__dict__['name'])
+    #print(x.__dict__['age']) # вызовет ошибку Индексирование словаря не производит поиск в иерархии наследования
+    print(x.__class__) # связь экземпляра с классом
+    print(rec.__bases__)
+    print(uppername(x))
+    rec.method = uppername
+    print(x.method(), y.method())
+    print(rec.method(x))
