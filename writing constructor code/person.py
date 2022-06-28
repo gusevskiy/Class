@@ -2,7 +2,7 @@ class Person:
     def __init__(self, name, job=None, pay=0):
         self.name = name   # Конструктор принимает три аргумента
         self.job = job     # Заполнить поля при создании
-        self.pay = pay      # self - новый объект экземпляра
+        self.pay = pay      # self - новый объект экземпляра.
 
     def lastName(self):
         return self.name.split()[-1]
