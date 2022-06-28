@@ -15,7 +15,7 @@ class FirstClass:
     def setdata(self, value):
         self.data = value
 
-        '''выводит значения'''
+    '''выводит значения'''
     def display(self):
         print(self.data)
 
@@ -86,18 +86,18 @@ if __name__ == "__main__":
     #print(rec.name)
     x = rec()
     y = rec()
-    print(x.name, y.name)
+    print('1 - ', x.name, y.name)
     x.name = 'Sue'
-    print(x.name, y.name, rec.name)
-    print(list(rec.__dict__.keys())) #список внутренних имен класса
-    print(list(name for name in rec.__dict__ if not name.startswith('__')))
-    print(list(x.__dict__.keys()))
-    print(list(y.__dict__.keys()))
-    print(x.name, x.__dict__['name'])
+    print('2 - ', x.name, y.name, rec.name)
+    print('3 - ', list(rec.__dict__.keys())) #список внутренних имен класса
+    print('4 - ', list(name for name in rec.__dict__ if not name.startswith('__')))
+    print('5 - ', list(x.__dict__.keys()))
+    print('6 - ', list(y.__dict__.keys()))
+    print('7 - ', x.name, x.__dict__['name'])
     #print(x.__dict__['age']) # вызовет ошибку Индексирование словаря не производит поиск в иерархии наследования
-    print(x.__class__) # связь экземпляра с классом
-    print(rec.__bases__)
-    print(uppername(x))
+    print('8 - ', x.__class__) # связь экземпляра с классом
+    print('9 - ', rec.__bases__)
+    print('10 - ', uppername(x))
     rec.method = uppername
-    print(x.method(), y.method())
-    print(rec.method(x))
+    print('11 - ', x.method(), y.method())
+    print('12 - ', rec.method(x))
