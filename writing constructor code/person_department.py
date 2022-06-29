@@ -1,4 +1,3 @@
-''' страница 54 том 2 Марк Луцк '''
 class Person:
     def __init__(self, name, job=None, pay=0):  # конструктор класса
         self.name = name   # Конструктор принимает три аргумента
@@ -26,20 +25,26 @@ class Manager(Person):
         Person.giveRaise(self, percent + bonus)
 
 
+class Department:
+    def __init__(self, *args):
+        self.members = list(args)
+
+    def addMember(self, person):
+        self.members.append(person)
+
+    def giveRaise(self, percent):
+        for person in self.members:
+            person.giveRaise(percent)
+
+    def showAll(self):
+        for person in self.members:
+            print(person)
+
 if __name__ == '__main__':
     bob = Person('Bob Smith')
     sue = Person('Sue Jones', job='dev', pay=100000)
-    print(bob)
-    print(sue)
-    print(bob.lastName(), sue.lastName())
-    sue.giveRaise(.10)
-    print(sue)
     tom = Manager('Tom Jones', 50000)
-# Manager: __init__  # возможно это в новой версии python ненужно
-    tom.giveRaise(.10)
-    print(tom.lastName())
-    print(tom)
-    print('__ALL three__')
-    for obj in (bob, sue, tom):
-        obj.giveRaise(.10)
-        print(obj)
+    development = Department(bob, sue)
+    development.addMember(tom)
+    development.giveRaise(.10)
+    development.showAll()
