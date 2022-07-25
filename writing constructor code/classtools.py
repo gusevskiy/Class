@@ -1,4 +1,4 @@
-"""Смешаные утилиты и инструменты для классов"""
+"""Смешаные утилиты и инструменты для классов стр 80"""
 
 
 class AttrDisplay:
@@ -6,7 +6,7 @@ class AttrDisplay:
         attrs = []
         for key in sorted(self.__dict__):
             attrs.append('%s=%s' % (key, getattr(self, key)))
-            return ', '.join(attrs)
+        return ', '.join(attrs)
 
     def __repr__(self):
         return '[%s: %s]' % (self.__class__.__name__, self.gatherAttrs())
@@ -20,6 +20,9 @@ if __name__ == '__main__':
             self.attr1 = TopTest.count
             self.attr2 = TopTest.count+1
             TopTest.count += 2
+
+        # def gatherAttrs(self):
+        #     return 'Spam'
 
     class SubTest(TopTest):
         pass

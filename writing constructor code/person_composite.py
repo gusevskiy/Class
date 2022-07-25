@@ -16,6 +16,7 @@ class Person:
         return '[Person: %s, %s]' % (self.name, self.pay)
         # return f'[Person: {self.name}, {self.pay}]'
 
+
 class Manager:
     def __init__(self, name, pay):
         self.person = Person(name, 'mgr', pay)
@@ -47,3 +48,6 @@ if __name__ == '__main__':
     for obj in (bob, sue, tom):
         obj.giveRaise(.10)
         print(obj)
+
+    print(len(dir(bob))) # выводит количество атрибутов
+    print(list(name for name in dir(bob) if not name.startswith('__')))
